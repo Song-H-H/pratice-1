@@ -85,14 +85,18 @@ const DetailPresenter = ({ result, loading, error }) =>
         </title>
       </Helmet>
       <Backdrop
-        bgImage={`https://image.tmdb.org/t/p/original${result.backdrop_path}`}
+        bgImage={
+          result.backdrop_path
+            ? `https://image.tmdb.org/t/p/original${result.backdrop_path}`
+            : require("../../assets/noPosterSmall.png").default
+        }
       />
       <Content>
         <Cover
           bgImage={
             result.poster_path
               ? `https://image.tmdb.org/t/p/original${result.poster_path}`
-              : require("../../assets/noPosterSmall.png")
+              : require("../../assets/noPosterSmall.png").default
           }
         />
         <Data>
